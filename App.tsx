@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from "react-native"
+import { RenderMdx } from "rn-mdx"
+
+import contentMdx from "./context.mdx"
+import { MyComponente } from "./MyComponente"
+
+import { styles } from "./styles"
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+      <RenderMdx
+        components={{ View, Text, MyComponente }}
+        componentStyle={{ linkLabel: { color: "blue" } }}
+      >
+        {/* {contentMdx} */}
+        {`
+          ## Markdown Here
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+          <View style={{ backgroundColor: 'gray', padding: 24, borderRadius: 8 }}>
+            <Text>Teste</Text>
+            
+            <MyComponente />
+          </View>
+
+        `}
+      </RenderMdx>
+    </View>
+  )
+}
